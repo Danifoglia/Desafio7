@@ -6,8 +6,8 @@ import config from '../src/config.js'
 const mariaDbClient = knex(config.mariaDb)
     try {
         //Implementar creación de tabla
-         await mariaDbClient.schema.dropTableIfExists('articulos');
-         await mariaDbClient.schema.createTable('articulos' ,  table => {
+         await mariaDbClient.schema.dropTableIfExists('productos');
+         await mariaDbClient.schema.createTable('productos' ,  table => {
             table.increments('id').primary();
             table.string('title').notNullable();
             table.float('price');
@@ -16,13 +16,13 @@ const mariaDbClient = knex(config.mariaDb)
         
         
         //Inserto elementos a modo ejemplo
-        const articulos = [
+        const productos = [
             {title: 'Mirinda'  ,price: 180, thumbnail:'' },
             {title: 'Seven Up', price: 190, thumbnail: ''},
             {title: 'Pepsi', price: 185, thumbnail: ''}
         ];
         
-         await mariaDbClient('articulos').insert(articulos);
+         await mariaDbClient('productos').insert(productos);
         
         console.log('tabla productos en mariaDb creada con éxito')
     } catch (error) {

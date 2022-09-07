@@ -14,7 +14,7 @@ const app = express()
 const httpServer = new HttpServer(app)
 const io = new Socket(httpServer)
 
-const productosApi = new ContenedorSQL(config.mariaDb, 'articulos')
+const productosApi = new ContenedorSQL(config.mariaDb, 'productos')
 const mensajesApi = new ContenedorSQL(config.sqlite3, 'mensajes')
 
 //--------------------------------------------
